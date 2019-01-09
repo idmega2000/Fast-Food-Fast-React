@@ -10,24 +10,31 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		path: path.resolve('dist'),
-		filename: 'bundle.js'
+		filename: 'bundle.js',
+		publicPath: '/'
 	},
+	devServer: {
+		historyApiFallback: true
+	},
+	resolve: { extensions: ['.js', '.jsx']},
 	module: {
 		rules: [
 		      {
-		        test: /\.js$/,
+		        test: /\.(js|jsx)$/,
 		        exclude: /node_modules/,
 		        use: "babel-loader"
-		      }, {
-		        test: /\.jsx?$/,
-		        exclude: /node_modules/,
-		        use: "babel-loader"
-					},
+		      },
 					{
 						test: /\.css$/,
 						use: [
 							{ loader: 'style-loader' },
 							{ loader: 'css-loader' }
+						]
+					},
+					{
+						test: /\.(png|jpg|gif)$/,
+						use: [
+							{ loader: 'file-loader' }
 						]
 					}
 	    ]
