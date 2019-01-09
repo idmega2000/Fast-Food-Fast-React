@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
-import '../styles/main.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LandingPage from './../pages/LandingPage';
 
-export default class App extends Component {
-  render() {
-    return (
-     <div style={{textAlign: 'center'}}>
-        <h1>Hello World</h1>
-      </div>);
-  }
-}
+
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <Switch>>
+        <Route exact path='/' component={LandingPage}/>
+      </Switch>
+    </BrowserRouter>
+  );
+} 
+
+export default Router;
