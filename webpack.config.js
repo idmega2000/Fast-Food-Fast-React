@@ -1,45 +1,45 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
-  inject: 'body'
-})
+  inject: 'body',
+});
 
 module.exports = {
-	entry: './src/index.js',
-	output: {
-		path: path.resolve('dist'),
-		filename: 'bundle.js',
-		publicPath: '/'
-	},
-	devServer: {
-		historyApiFallback: true
-	},
-	resolve: { extensions: ['.js', '.jsx']},
-	module: {
-		rules: [
-		      {
-		        test: /\.(js|jsx)$/,
-		        exclude: /node_modules/,
-		        use: "babel-loader"
-		      },
-					{
-						test: /\.css$/,
-						use: [
-							{ loader: 'style-loader' },
-							{ loader: 'css-loader' }
-						]
-					},
-					{
-						test: /\.(png|jpg|gif)$/,
-						use: [
-							{ loader: 'file-loader' }
-						]
-					}
-	    ]
+  entry: './src/index.js',
+  output: {
+    path: path.resolve('dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
+  resolve: { extensions: ['.js', '.jsx'] },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          { loader: 'file-loader' },
+        ],
+      },
+    ],
 
-	},
-	plugins: [HtmlWebpackPluginConfig]
-}
-
+  },
+  plugins: [HtmlWebpackPluginConfig],
+};
