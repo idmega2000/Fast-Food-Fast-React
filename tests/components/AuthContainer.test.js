@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from '../../src/App';
+import AuthContainer from '../../src/components/AuthContainer';
 
 describe('This test the app component', () => {
   it('test the app component', () => {
-    const wrapper = shallow(<App />);
-    const text = wrapper.find('BrowserRouter');
+    const wrapper = shallow(<AuthContainer />);
+    const text = wrapper.find('.login-wrapper');
     expect(text.length).toEqual(1);
   });
 });

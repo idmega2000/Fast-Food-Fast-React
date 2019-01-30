@@ -30,7 +30,6 @@ input:hover , textarea:hover{
 }
 
 footer{	
-    
     margin-bottom: -5em;
 	clear: both;
     background-color: rgb(44, 39, 39);
@@ -42,8 +41,8 @@ footer{
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.9px;
-    padding-bottom: -10;
     display: inline-block;
+    padding-bottom: -10px;
 }
 
 footer p,footer a{
