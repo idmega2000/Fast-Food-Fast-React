@@ -213,7 +213,7 @@ header a:hover{
 
 @media screen and (min-width: 600px) and (max-width: 900px) {
 	#header-sm-sc{
-		display: flex;
+		display: block;
 	}
 	.admin-header-bars{
 		display: inline-block;
@@ -235,7 +235,7 @@ header a:hover{
 
 @media screen and (max-width: 600px) {
 	#header-sm-sc{
-		display: flex;
+		display: block;
 		align-items: center;
 	}
 	.admin-header-bars{

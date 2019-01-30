@@ -27,13 +27,13 @@ export default class Header extends Component {
               <nav className="nav-list">
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="/">Home</a>
                   </li>
                   <li>
                     <a href="/login">Login</a>
                   </li>
                   <li>
-                    <a href="pages/signup.html">Signup</a>
+                    <a href="/signup">Signup</a>
                   </li>
                 </ul>
               </nav>

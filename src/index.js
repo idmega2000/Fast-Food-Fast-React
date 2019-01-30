@@ -1,5 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Router from './components/App';
+import { ToastContainer } from 'react-toastify';
+import Router from './App';
+import 'react-toastify/dist/ReactToastify.css';
 
-render(<Router />, document.getElementById('root'));
+render(<div><Router /><ToastContainer /></div>, document.getElementById('root'));
