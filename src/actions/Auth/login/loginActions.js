@@ -22,7 +22,7 @@ export const loginUser = (userDetails, history) => async (dispatch) => {
     const response = await axios.post(`${HOST}/auth/login`, { ...userDetails });
     localStorage.setItem('token', response.data.token);
     dispatch(loginSuccess(response.data.message));
-    history.push('/');
+    history.push('/menu');
   } catch (err) {
     dispatch(loginFail(err.response.data.error));
   }

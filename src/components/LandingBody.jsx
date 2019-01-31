@@ -19,7 +19,7 @@ const LandingBody = () => <div className="main-body">
       <div id="front-content-cover">
         <div id="front-content-con">
           <h1>Your Online Fast Food Fast</h1>
-          <a href="pages/fastfood.html" className="anchor-button"> Order Now</a>
+          <a href="/menu" className="anchor-button"> Order Now</a>
         </div>
         <div id="arrowP" className="arrow bounce">
           <a id="arrowAnchor" href="#BrandActivities">
@@ -70,7 +70,7 @@ const LandingBody = () => <div className="main-body">
                 <p>Price: NGN 1,000</p>
               </div>
               <div>
-                <a href="pages/fastfood.html"
+                <a href="/menu"
                   className="anchor-button andchor-full-width">Order</a>
               </div>
             </div>
@@ -86,7 +86,7 @@ const LandingBody = () => <div className="main-body">
               </div>
               <div>
                 <a className="anchor-button andchor-full-width"
-                  href="pages/fastfood.html">Order</a>
+                  href="/menu">Order</a>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@ const LandingBody = () => <div className="main-body">
               </div>
               <div>
                 <a className="anchor-button andchor-full-width"
-                href="pages/fastfood.html">Order</a>
+                href="/menu">Order</a>
               </div>
             </div>
           </div>

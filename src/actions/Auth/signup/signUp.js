@@ -22,7 +22,7 @@ export const signUpUser = (userDetails, history) => async (dispatch) => {
     const response = await axios.post(`${HOST}/auth/signup`, { ...userDetails });
     localStorage.setItem('token', response.data.token);
     dispatch(signUpSuccess(response.data.message));
-    history.push('/');
+    history.push('/menu');
   } catch (err) {
     dispatch(signUpFail(err.response.data.error));
   }

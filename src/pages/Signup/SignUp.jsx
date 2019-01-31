@@ -10,6 +10,7 @@ import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
 import authValidation from '../../helpers/authValidation';
 import signActionCreators from '../../actions/Auth/signup/signUp';
+import decodedToken from '../../helpers/decodeUserToken';
 
 
 /**
@@ -40,6 +41,16 @@ export class SignUp extends Component {
     };
   }
 
+
+  /**
+ * @return {void} -
+ */
+  componentDidMount() {
+    const userDetail = decodedToken();
+    if (userDetail) {
+      this.props.history.push('/menu');
+    }
+  }
 
   /**
    * @param {*} e - event
@@ -103,7 +114,7 @@ export class SignUp extends Component {
       </div>
       <div className="input-wrapper">
         <div className="input-div">
-          <span>Name</span>
+          <span>User-Name</span>
           <span className="is-required">*</span>
         </div>
         <input className="user-input" type="text"

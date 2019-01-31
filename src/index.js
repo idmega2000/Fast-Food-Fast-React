@@ -3,5 +3,8 @@ import { render } from 'react-dom';
 import { ToastContainer } from 'react-toastify';
 import Router from './App';
 import 'react-toastify/dist/ReactToastify.css';
+import decodeUserToken from './helpers/decodeUserToken';
 
-render(<div><Router /><ToastContainer /></div>, document.getElementById('root'));
+const user = decodeUserToken();
+
+render(<div><Router user={user} /><ToastContainer /></div>, document.getElementById('root'));

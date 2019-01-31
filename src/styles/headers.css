@@ -81,9 +81,11 @@ header a:hover{
 .small-header-cart{
 	flex: 1;
 	padding-top: 5px;
+	float: left;
 }
 .header-bars{
 	flex: 1;
+	float: right;
 }
 .bar {
     width: 20px;

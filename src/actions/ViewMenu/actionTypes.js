@@ -1,0 +1,3 @@
+export const VIEW_MENU_START = 'VIEW_MENU_START';
+export const VIEW_MENU_SUCCESS = 'VIEW_MENU_SUCCESS';
+export const VIEW_MENU_FAIL = 'VIEW_MENU_FAIL';
