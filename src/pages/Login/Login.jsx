@@ -1,49 +1,102 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component, Fragment } from 'react';
+import { toast } from 'react-toastify';
+import { ClipLoader } from 'react-spinners';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
-import '../../styles/main.css';
-import '../../styles/form.css';
+import authValidation from '../../helpers/authValidation';
+import loginActionCreators from '../../actions/Auth/login/loginActions';
 
 
 /**
  * @class
  */
-class SignupForm extends Component {
-  /**
+export class Login extends Component {
+    static propTypes = {
+      loginUser: PropTypes.func,
+      error: PropTypes.bool,
+      isLoading: PropTypes.bool,
+      history: PropTypes.object,
+      user: PropTypes.any,
+      success: PropTypes.bool,
+      response: PropTypes.any,
+    };
+
+    /**
    * @constructor
    */
-  constructor() {
-    super();
-    this.state = {
-      error: {},
-      email: '',
-    };
-  }
+    constructor() {
+      super();
+      this.state = {
+        error: {},
+        user: {
+          userEmail: '',
+          userPassword: '',
+        },
+      };
+    }
 
+
+    /**
+   * @description - decides if component should throw error or update
+   * @param {object} nextProps - react next prop to target next prop
+   * @returns {bool} - if the component should be updated or not
+   */
+    shouldComponentUpdate(nextProps) {
+      if (this.props.error !== nextProps.error && nextProps.error === true) {
+        toast.error(`${nextProps.response}`);
+        return true;
+      }
+      return true;
+    }
 
   /**
-   *
-   * @param {*} e - the objecet to be acted upon
-   * @return {void} -
+   * @param {object} e - The event object to be acted on
+   * @returns {void} - signs the user in
+   * @description Handles the submission of the login form
    */
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
+    const { loginUser } = this.props;
+    const { user } = this.state;
+    const error = authValidation.authLogin(user);
+    if (error) {
+      toast.error(error);
+      return false;
+    }
+    loginUser(this.state.user, this.props.history);
   }
 
-x
+  /**
+   * @param {object} e - The Event object
+   * @returns {void} - No return
+   * @memberof Login
+   * @description Handles input changes
+   */
+  handleChange = (e) => {
+    const { user } = this.state;
+    this.setState({
+      user: {
+        ...user,
+        [e.target.id]: e.target.value,
+      },
+    });
+  }
 
-/**
+  /**
    * @function
    * @returns {JSX} JSX
    */
-render() {
-  return (
+  render() {
+    return (
     <Fragment>
     <Header />
     <AuthContainer>
-        <form onSubmit="return false;">
+        <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
             <div className="login-form-title">Login</div>
             <div className="input-div">
                 <span id="signUpErrorHandler" className="error-hander"> </span>
@@ -63,22 +116,47 @@ render() {
                     <span className="required">*</span>
                 </div>
                 <input className="user-input" type="password"
-                name="Password" id="password" placeholder="Enter Password" />
+                name="Password" id="userPassword" placeholder="Enter Password" />
                 <i className="fa fa-lock filter-user-input"></i>
             </div>
-            <div className="form-btn">
+            {!this.props.isLoading ? (
+                <div>
+                <div className="form-btn">
                 <button id="loginBtn" className="signin-btn" type="submit">Sign In</button>
-            </div>
-            <div className="other-link">
+                </div>
+                <div className="other-link">
                 <a href="./signup.html">Don't have an account? Sign Up</a>
             </div>
+                </div>
+            ) : (
+                <div className='centerdiv'>
+                <ClipLoader
+                sizeUnit='px'
+                size={30}
+                color='#fff'
+                loading={true}
+                  />
+              </div>
+            )
+            }
+
         </form>
     </AuthContainer>
     <Footer />
 
     </Fragment>
-  );
-}
+    );
+  }
 }
 
-export default SignupForm;
+export const mapStateToProps = state => ({
+  ...state.loginReducer,
+});
+
+export const
+  mapDispatchToProps = dispatch => bindActionCreators(loginActionCreators, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);
