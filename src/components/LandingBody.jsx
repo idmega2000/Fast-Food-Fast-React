@@ -1,5 +1,12 @@
 import React from 'react';
 import '../styles/main.css';
+import img12 from '../img/img12.jpg';
+import deliciousFood from '../img/delicious-food.jpg';
+import deliciousBuffet from '../img/delicious-buffet-foodss.png';
+import coolMeal from '../img/cool-meal.jpg';
+import friedRiceAndChicken from '../img/fried-rice-by-afrolems-nigerian-stylee.png';
+import deliveryClipart from '../img/delivering-clipart.png';
+import maxresdefaultt from '../img/maxresdefaultt.png';
 /**
  * @description The Landing page Body component
  * @returns {JSX}- Returns Landing page body jsx
@@ -7,7 +14,7 @@ import '../styles/main.css';
 const LandingBody = () => <div className="main-body">
     <div className="main-im-cov">
       <div className="main-image-sec">
-        <img id="backimage" src="./src/img/img12.jpg" />
+        <img id="backimage" src={img12} />
       </div>
       <div id="front-content-cover">
         <div id="front-content-con">
@@ -24,7 +31,7 @@ const LandingBody = () => <div className="main-body">
         <div className="brand-activities" id="BrandActivities">
           <div className="  row col-3 brand-act-cov">
             <div className="brand-act-images">
-              <img src="./src/img/delicious-food.jpg" alt="Delicious food" />
+              <img src={deliciousFood} alt="Delicious food" />
             </div>
             <h3>Delicious Food</h3>
             <p> You want to have a taste of the food that
@@ -33,7 +40,7 @@ const LandingBody = () => <div className="main-body">
           </div>
           <div className=" row col-3 brand-act-cov">
             <div className="brand-act-images">
-              <img src="./src/img/delivering-clipart.png" alt="quick delivery" />
+              <img src={deliveryClipart} alt="quick delivery" />
             </div>
             <h3>Quick Delivery</h3>
             <p>want your your ordered food to get
@@ -43,7 +50,7 @@ const LandingBody = () => <div className="main-body">
           </div>
           <div className=" row col-3 brand-act-cov">
             <div className="brand-act-images">
-              <img src="./src/img/maxresdefaultt.png" alt="Order in Advance" />
+              <img src={maxresdefaultt} alt="Order in Advance" />
             </div>
             <h3>Ordering in Advance</h3>
             <p> You have an evnet or meeting coming up,
@@ -56,7 +63,7 @@ const LandingBody = () => <div className="main-body">
           <div className="row col-4 order-a-meal">
             <div className="red-order-meals">
               <div className="order-image">
-                <img src="./src/img/delicious-buffet-foodss.png" />
+                <img src={deliciousBuffet} />
               </div>
               <div className="order-content">
                 <h3>Salad and Chicken</h3>
@@ -71,7 +78,7 @@ const LandingBody = () => <div className="main-body">
           <div className=" row col-4 order-a-meal">
             <div className="red-order-meals">
               <div className="order-image">
-                <img src="./src/img/cool-meal.jpg" />
+                <img src={coolMeal} />
               </div>
               <div className="order-content">
                 <h3>Burger and Fries</h3>
@@ -86,7 +93,7 @@ const LandingBody = () => <div className="main-body">
           <div className="row col-4 order-a-meal">
             <div className="red-order-meals">
               <div className="order-image">
-                <img src="./src/img/fried-rice-by-afrolems-nigerian-stylee.png" />
+                <img src={friedRiceAndChicken} />
               </div>
               <div className="order-content">
                 <h3>Rice and chicken</h3>
