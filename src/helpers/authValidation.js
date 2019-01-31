@@ -70,17 +70,8 @@ class authValidation {
     if (!userPassword) {
       return 'Password is Required';
     }
-    if (userEmail.length < 6) {
-      return 'Email should be six character and above';
-    }
-    if (userPassword.length < 6) {
-      return 'Password can only be six character and above';
-    }
     if (!userEmail.match(emailReg)) {
       return 'Please Enter a valid Email';
-    }
-    if (!userPassword.match(alphaOnly)) {
-      return 'Password can only be alphabets and numbers';
     }
     if (userEmail.length > 40) {
       return 'Email should be less than 30 char';

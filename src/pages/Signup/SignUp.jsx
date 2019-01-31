@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
-import '../../styles/main.css';
-import '../../styles/form.css';
 import authValidation from '../../helpers/authValidation';
 import signActionCreators from '../../actions/Auth/signup/signUp';
 

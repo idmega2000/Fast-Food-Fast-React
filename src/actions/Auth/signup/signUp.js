@@ -18,10 +18,8 @@ export const signUpFail = payload => ({
 });
 export const signUpUser = (userDetails, history) => async (dispatch) => {
   dispatch(signUpStart());
-
   try {
     const response = await axios.post(`${HOST}/auth/signup`, { ...userDetails });
-
     localStorage.setItem('token', response.data.token);
     dispatch(signUpSuccess(response.data.message));
     history.push('/');
