@@ -10,6 +10,7 @@ import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
 import authValidation from '../../helpers/authValidation';
 import loginActionCreators from '../../actions/Auth/login/loginActions';
+import decodedToken from '../../helpers/decodeUserToken';
 
 
 /**
@@ -40,6 +41,16 @@ export class Login extends Component {
       };
     }
 
+
+    /**
+ * @return {void} -
+ */
+    componentDidMount() {
+      const userDetail = decodedToken();
+      if (userDetail) {
+        this.props.history.push('/menu');
+      }
+    }
 
     /**
    * @description - decides if component should throw error or update

@@ -41,9 +41,9 @@ export default class Header extends Component {
           </div>
         </header>
         <section id="slide-nav">
-          <a href="#">Home</a>
-          <a href="pages/login.html">Login</a>
-          <a href="pages/signup.html">Signup</a>
+          <a href="/">Home</a>
+          <a href="pages/login">Login</a>
+          <a href="pages/signup">Signup</a>
         </section>
       </Fragment>
     );
