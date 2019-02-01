@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import LandingBody from '../components/LandingBody';
 import Footer from '../components/Footer';
 import FirstFooter from '../components/FirstFooter';
-import AuthHeader from '../components/AuthHeader';
 import decodedToken from '../helpers/decodeUserToken';
 
 
@@ -39,12 +38,7 @@ componentWillMount() {
 render() {
   return (
       < div>
-      {
-        this.state.isLoggedIn ? (
-          <AuthHeader userName={this.state.userDetail.userName}/>
-        )
-          : (<Header />)
-      }
+      <Header />
 
       <LandingBody />
       <FirstFooter />
