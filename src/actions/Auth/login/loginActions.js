@@ -16,13 +16,12 @@ export const loginFail = payload => ({
   payload,
 });
 
-export const loginUser = (userDetails, history) => async (dispatch) => {
+export const loginUser = userDetails => async (dispatch) => {
   dispatch(loginStart());
   try {
     const response = await axios.post(`${HOST}/auth/login`, { ...userDetails });
     localStorage.setItem('token', response.data.token);
     dispatch(loginSuccess(response.data.message));
-    history.push('/menu');
   } catch (err) {
     dispatch(loginFail(err.response.data.error));
   }

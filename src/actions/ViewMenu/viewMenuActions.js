@@ -17,6 +17,29 @@ export const viewMenuFail = payload => ({
   payload,
 });
 
+export const postMenuStart = () => ({
+  type: actionTypes.POST_MENU_START,
+});
+
+export const postMenuSuccess = payload => ({
+  type: actionTypes.POST_MENU_SUCCESS,
+  payload,
+});
+
+export const postMenuFail = payload => ({
+  type: actionTypes.POST_MENU_FAIL,
+  payload,
+});
+
+export const UpdateTheCartIcon = payload => ({
+  type: actionTypes.UPDATE_CART_ICON,
+  payload,
+});
+
+export const updateCartIcon = payload => (dispatch) => {
+  dispatch(UpdateTheCartIcon(payload));
+};
+
 export const viewMenu = token => async (dispatch) => {
   dispatch(viewMenuStart());
   try {
@@ -31,10 +54,32 @@ export const viewMenu = token => async (dispatch) => {
   }
 };
 
+export const placeOrder = (payload, token) => async (dispatch) => {
+  dispatch(postMenuStart());
+  try {
+    const response = await axios.post(`${HOST}/orders`, {
+      ...payload,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch(postMenuSuccess(response.data.message));
+  } catch (err) {
+    dispatch(postMenuFail(err.response.data.error));
+  }
+};
+
 
 export default {
   viewMenuStart,
   viewMenuSuccess,
   viewMenuFail,
   viewMenu,
+  updateCartIcon,
+  postMenuStart,
+  postMenuSuccess,
+  postMenuFail,
+  placeOrder,
 };

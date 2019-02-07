@@ -10,7 +10,6 @@ import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
 import authValidation from '../../helpers/authValidation';
 import loginActionCreators from '../../actions/Auth/login/loginActions';
-import decodedToken from '../../helpers/decodeUserToken';
 
 
 /**
@@ -30,40 +29,40 @@ export class Login extends Component {
     /**
    * @constructor
    */
-    constructor() {
-      super();
-      this.state = {
-        error: {},
-        user: {
-          userEmail: '',
-          userPassword: '',
-        },
-      };
-    }
+
+  state = {
+    error: {},
+    user: {
+      userEmail: '',
+      userPassword: '',
+    },
+  };
 
 
-    /**
+  /**
  * @return {void} -
  */
-    componentDidMount() {
-      const userDetail = decodedToken();
-      if (userDetail) {
-        this.props.history.push('/menu');
-      }
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.history.push('/menu');
     }
+  }
 
-    /**
+  /**
    * @description - decides if component should throw error or update
    * @param {object} nextProps - react next prop to target next prop
    * @returns {bool} - if the component should be updated or not
    */
-    shouldComponentUpdate(nextProps) {
-      if (this.props.error !== nextProps.error && nextProps.error === true) {
-        toast.error(`${nextProps.response}`);
-        return true;
-      }
+  shouldComponentUpdate(nextProps) {
+    if (this.props.error !== nextProps.error && nextProps.error === true) {
+      toast.error(`${nextProps.response}`);
       return true;
     }
+    if (nextProps.success === true) {
+      window.location.replace('/menu');
+    }
+    return true;
+  }
 
   /**
    * @param {object} e - The event object to be acted on
@@ -72,14 +71,13 @@ export class Login extends Component {
    */
   handleSubmit = (e) => {
     e.preventDefault();
-    const { loginUser } = this.props;
     const { user } = this.state;
     const error = authValidation.authLogin(user);
     if (error) {
       toast.error(error);
       return false;
     }
-    loginUser(this.state.user, this.props.history);
+    this.props.loginUser(this.state.user);
   }
 
   /**

@@ -370,6 +370,7 @@
         border: none;
         outline: none;
         cursor: pointer;
+        margin-top: 20px;
     }
 
 
@@ -544,7 +545,7 @@
         }
         .del-meal-btn{
             font-size: 12px;
-            width: 40px;
+            width: 50px;
             height: 23px;
             font-weight: 700;
             border: none;
@@ -562,6 +563,15 @@
         #compOrdDiv{
             width: 70%;
          }
+
+    #placeOrderBtn{
+        width: 90px;
+        height: 30px;
+        font-weight: 700;
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
 
     }
 
@@ -597,7 +607,7 @@
             padding: 1px;
         }
         .del-meal-btn{
-            font-size: 10px;
+            font-size: 9px;
             width: 40px;
             height: 23px;
             font-weight: 700;
@@ -617,5 +627,12 @@
         #compOrdDiv{
             width: 90%;
          }
+         #placeOrderBtn{
+            width: 70px;
+            height: 27px;
+            font-weight: 700;
+            margin-top: 10px;
+            font-size: 9px;
+        }
 
     }

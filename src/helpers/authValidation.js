@@ -26,26 +26,20 @@ class authValidation {
     if (!userPassword) {
       return 'Password is Required';
     }
-    if (userEmail.length < 6) {
-      return 'Email should be six character and above';
+    if (!String(userEmail).match(emailReg)) {
+      return 'Please Enter a valid Email';
+    }
+    if (!String(userName).match(alphaWithSpace)) {
+      return 'name can only be alphabets and numbers';
     }
     if (userPassword.length < 6) {
       return 'Password can only be six character and above';
     }
-    if (!userEmail.match(emailReg)) {
-      return 'Please Enter a valid Email';
-    }
-    if (!userPassword.match(alphaOnly)) {
+    if (!String(userPassword).match(alphaOnly)) {
       return 'Password can only be alphabets and numbers';
-    }
-    if (!userName.match(alphaWithSpace)) {
-      return 'name can only be alphabets and numbers';
     }
     if (userName.length >= 20) {
       return 'name should be less than 20 char';
-    }
-    if (userEmail.length > 40) {
-      return 'Email should be less than 30 char';
     }
     if (userPassword.length > 40) {
       return 'Password must be less than 40 char';
@@ -70,11 +64,8 @@ class authValidation {
     if (!userPassword) {
       return 'Password is Required';
     }
-    if (!userEmail.match(emailReg)) {
+    if (!String(userEmail).match(emailReg)) {
       return 'Please Enter a valid Email';
-    }
-    if (userEmail.length > 40) {
-      return 'Email should be less than 30 char';
     }
     if (userPassword.length > 40) {
       return 'Password must be less than 40 char';

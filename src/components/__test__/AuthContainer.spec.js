@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AuthContainer from '../../src/components/AuthContainer';
+import AuthContainer from '../AuthContainer';
 
 describe('This test the app component', () => {
   it('test the app component', () => {

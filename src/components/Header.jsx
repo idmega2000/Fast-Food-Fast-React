@@ -5,6 +5,19 @@ import '../styles/headers.css';
  * @description The Header component
  */
 export default class Header extends Component {
+  state= {
+    openNav: false,
+  }
+
+  /**
+   * @returns {void} -
+   */
+  handleOpenNavBar =() => {
+    this.setState({
+      openNav: !this.state.openNav,
+    });
+  }
+
   /**
   * @returns {JSX}- Returns the header jsx
   */
@@ -14,13 +27,13 @@ export default class Header extends Component {
         <header>
           <div className="nav">
             <div className="header-container">
-              <div id="header-sm-sc">
+              <div onClick={this.handleOpenNavBar} id="header-sm-sc">
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>
               </div>
               <div id="homecontainer">
-                <a href="index.html">
+                <a href="/">
                   <h1>Fast-Food-Fast</h1>
                 </a>
               </div>
@@ -40,11 +53,18 @@ export default class Header extends Component {
             </div>
           </div>
         </header>
-        <section id="slide-nav">
-          <a href="/">Home</a>
-          <a href="pages/login">Login</a>
-          <a href="pages/signup">Signup</a>
-        </section>
+        {
+            this.state.openNav ? (
+              <section id="slide-nav">
+                <a href="/">Home</a>
+                <a href="pages/login">Login</a>
+                <a href="pages/signup">Signup</a>
+            </section>
+            ) : (
+              null
+            )
+        }
+
       </Fragment>
     );
   }

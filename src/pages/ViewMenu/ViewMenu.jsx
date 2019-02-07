@@ -7,7 +7,7 @@ import AuthHeader from '../../components/AuthHeader';
 import Footer from '../../components/Footer';
 import viewMenuActions from '../../actions/ViewMenu/viewMenuActions';
 import EachMenu from './EachMenu';
-import decodedToken from '../../helpers/decodeUserToken';
+import getTotalQuantity from '../../helpers/getTotalQuantity';
 
 
 /**
@@ -16,13 +16,15 @@ import decodedToken from '../../helpers/decodeUserToken';
 export class ViewMenu extends Component {
   static propTypes = {
     signUpUser: PropTypes.func,
-    response: PropTypes.strianyng,
+    response: PropTypes.any,
     error: PropTypes.bool,
-    history: PropTypes.object,
     isLoading: PropTypes.bool,
     user: PropTypes.any,
     id: PropTypes.string,
     viewMenu: PropTypes.func,
+    success: PropTypes.bool,
+    updateCartIcon: PropTypes.func,
+    history: PropTypes.object,
   }
 
   static state = {
@@ -42,11 +44,13 @@ export class ViewMenu extends Component {
    */
   componentDidMount() {
     const token = localStorage.getItem('token');
-    const userDetails = decodedToken();
-    if (!userDetails) {
+    if (!this.props.user) {
       this.props.history.push('/login');
     }
     this.props.viewMenu(token);
+    const cartMenuDetails = JSON.parse(localStorage.getItem('menuCart'));
+    const totalQuantity = getTotalQuantity(cartMenuDetails);
+    this.props.updateCartIcon(totalQuantity);
   }
 
 

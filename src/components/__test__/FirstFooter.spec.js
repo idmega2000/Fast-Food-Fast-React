@@ -1,11 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Footer from '../../src/components/Footer';
+import FirstFooter from '../FirstFooter';
+
 
 describe('This test the app component', () => {
   it('test the app component', () => {
-    const wrapper = shallow(<Footer />);
+    const wrapper = shallow(<FirstFooter />);
     const text = wrapper.find('a').text();
-    expect(text).toEqual('Terms & Privacy');
+    expect(text).toEqual('Order Now');
   });
 });
