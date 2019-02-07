@@ -1,20 +1,39 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../styles/headers.css';
 
 /**
  * @description The Header component
+ * @class
  */
-export default class Header extends Component {
+export class AuthHeader extends Component {
     static propTypes = {
-      userName: PropTypes.func,
+      userName: PropTypes.string,
+      cartOrderQuantity: PropTypes.any,
     };
 
+    state = {
+      openNav: false,
+    }
 
-    // logoutUser() {
-    //   localStorage.clear();
-    //   this.push.history('/login');
-    // }
+
+    handleOpenNavBar =() => {
+      this.setState({
+        openNav: !this.state.openNav,
+      });
+    }
+
+    /**
+     *
+     * @param {*} e The event to be acted upon
+     * @returns {void} -
+     */
+    logoutUser(e) {
+      e.preventDefault();
+      localStorage.clear();
+      window.location.replace('/');
+    }
 
     /**
   * @returns {JSX}- Returns the header jsx
@@ -29,11 +48,12 @@ export default class Header extends Component {
                         <div className="small-header-cart">
                             <div className="shopping-cart">
                                 <a href="/order-cart">
-                                <span className="quantity-amount-holder" ></span></a>
-                                <a className="fa fa-shopping-cart" href="order-cart.html"></a>
+                                <span className="quantity-amount-holder" >
+                                </span>{this.props.cartOrderQuantity}</a>
+                                <a className="fa fa-shopping-cart" href="order-cart"></a>
                             </div>
                         </div>
-                        <div className="header-bars">
+                        <div onClick={this.handleOpenNavBar} className="header-bars">
                             <div className="bar"></div>
                             <div className="bar"></div>
                             <div className="bar"></div>
@@ -46,8 +66,9 @@ export default class Header extends Component {
                     </div>
                     <nav className="nav-list">
                         <div className="shopping-cart">
-                            <a href="order-cart.html">
-                            <span className="quantity-amount-holder" ></span></a>
+                            <a href="order-cart">
+                            <span className="quantity-amount-holder" >
+                            </span>{this.props.cartOrderQuantity}</a>
                             <a className="fa fa-shopping-cart" href="/order-cart"></a>
                         </div>
                         <ul className="ul-user">
@@ -58,7 +79,8 @@ export default class Header extends Component {
                                 <div className="dropdown-content nav-dropdown">
                                     <a href="/menu">Fast Food</a>
                                     <a href="/user-history">Order History</a>
-                                    <a className="logout-btn" onClick={this.logoutUser}>Logout</a>
+                                    <a className="logout-btn" href='#'
+                                    onClick={this.logoutUser}>Logout</a>
                                 </div>
                             </li>
                         </ul>
@@ -66,12 +88,25 @@ export default class Header extends Component {
                 </div>
             </div>
         </header>
-        <section id="slide-nav" className="nav-dropdown">
-            <a href="/menu">Fast Food</a>
-            <a href="/user-history">Order History</a>
-            <a id="logoutBtn" className="logout-btn" href="login.html">Logout</a>
-        </section>
+        {
+            this.state.openNav ? (
+                <section id="slide-nav" className="nav-dropdown">
+                <a href="/menu">Fast Food</a>
+                <a href="/user-history">Order History</a>
+                <a id="logoutBtn" href='#'
+                onClick={this.logoutUser} className="logout-btn">Logout</a>
+            </section>
+            ) : (
+              null
+            )
+        }
       </Fragment>
       );
     }
 }
+
+export const mapStateToProps = state => ({
+  ...state.viewMenuReducer,
+});
+
+export default connect(mapStateToProps)(AuthHeader);

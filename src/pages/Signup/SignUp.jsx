@@ -10,7 +10,6 @@ import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
 import authValidation from '../../helpers/authValidation';
 import signActionCreators from '../../actions/Auth/signup/signUp';
-import decodedToken from '../../helpers/decodeUserToken';
 
 
 /**
@@ -23,6 +22,8 @@ export class SignUp extends Component {
     error: PropTypes.bool,
     history: PropTypes.object,
     isLoading: PropTypes.bool,
+    user: PropTypes.any,
+    success: PropTypes.any,
   }
 
   /**
@@ -41,13 +42,11 @@ export class SignUp extends Component {
     };
   }
 
-
   /**
  * @return {void} -
  */
   componentDidMount() {
-    const userDetail = decodedToken();
-    if (userDetail) {
+    if (this.props.user) {
       this.props.history.push('/menu');
     }
   }
@@ -94,6 +93,9 @@ export class SignUp extends Component {
     if (this.props.error !== nextProps.error && nextProps.error === true) {
       toast.error(`${nextProps.response}`);
       return true;
+    }
+    if (nextProps.success === true) {
+      window.location.replace('/menu');
     }
     return true;
   }

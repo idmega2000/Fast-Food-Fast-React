@@ -16,13 +16,12 @@ export const signUpFail = payload => ({
   type: actionTypes.SIGN_UP_FAIL,
   payload,
 });
-export const signUpUser = (userDetails, history) => async (dispatch) => {
+export const signUpUser = userDetails => async (dispatch) => {
   dispatch(signUpStart());
   try {
     const response = await axios.post(`${HOST}/auth/signup`, { ...userDetails });
     localStorage.setItem('token', response.data.token);
     dispatch(signUpSuccess(response.data.message));
-    history.push('/menu');
   } catch (err) {
     dispatch(signUpFail(err.response.data.error));
   }

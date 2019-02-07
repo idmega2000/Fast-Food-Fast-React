@@ -13,8 +13,11 @@ body{
     padding: 0px;
     background-color: rgb(245, 230, 230);
 	display: block;
-
 }
+
+textarea {
+    resize: none;
+  }
 button:hover{
     background-color: #9e7275;
 }
@@ -94,7 +97,7 @@ footer p,footer a{
     display: block;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
-    min-height: 77vh;
+    min-height: calc(100vh - 153px);
 }
 .main-body-rel{
     position: relative;
@@ -132,6 +135,9 @@ footer p,footer a{
     border-radius: 8px;
 }
 
+.clipps{
+    margin-top: 50px;
+}
 
 /* content idea from getbootstrap.com*/
 
