@@ -116,7 +116,6 @@ header a:hover{
 
 /* the navigation menu */
 #slide-nav {
-	display: none;
 	position: relative;
 	width: 100%;
     top: 0; /* Stay at the top */
@@ -134,6 +133,9 @@ header a:hover{
     color: #f5ebeb;
     display: block;
     transition: 0.3s;
+}
+#slide-nav a:hover {
+	background: rgba(194, 164, 164, 0.4);
 }
 /*user header*/
 
@@ -205,9 +207,6 @@ header a:hover{
 
 
 /* When you mouse over the navigation links, change their color */
-#slide-nav a:hover {
-    color: #f1f1f1;
-}
 .nav-slide-toggle{
 	height: 240px !important;
 	display: block !important;

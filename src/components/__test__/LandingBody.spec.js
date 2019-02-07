@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LandingBody from '../../src/components/LandingBody';
+import LandingBody from '../LandingBody';
 
 describe('This test the app component', () => {
   it('test the app component', () => {

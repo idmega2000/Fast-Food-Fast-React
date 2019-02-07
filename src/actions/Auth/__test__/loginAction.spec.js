@@ -1,9 +1,12 @@
 /* eslint-disable max-len */
 import moxios from 'moxios';
+import faker from 'faker';
 import * as loginActions from '../login/loginActions';
 import * as type from '../AuthTypes/loginActionTypes';
+import HOST from '../../../helpers/hostUrl';
 
 const dispatchFn = jest.fn();
+const url = `${HOST}/auth/login`;
 
 describe('Login Act{ions', () => {
   beforeEach(() => {
@@ -34,53 +37,59 @@ describe('Login Act{ions', () => {
   });
 
 
-  //   it('should call the login start dispatch function', async () => {
-  //     const fakeUser = {
-  //       email: 'shola@gmail.com',
-  //       password: 'jdjdjd',
-  //     };
-  //     const mockResponse = {
-  //       response: {
-  //         data: {
-  //           error: 'error',
-  //         },
-  //       },
-  //     };
+  it('should call the login start dispatch function', async () => {
+    const fakeUser = {
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+    };
+    const mockResponse = {
+      response: {
+        data: {
+          message: 'hello',
+        },
+      },
+    };
 
-  //     moxios.stubRequest(url, mockResponse);
-  //     await loginActions.loginUser(fakeUser)(dispatchFn);
-  //     expect(dispatchFn).toBeCalled();
-  //     expect(dispatchFn).toBeCalledWith({ type: type.LOGIN_START });
-  //   });
+    moxios.stubRequest(url, mockResponse);
+    await loginActions.loginUser(fakeUser)(dispatchFn);
+    expect(dispatchFn).toBeCalled();
+  });
 
-  //   it('should call the login success dispatch function', async () => {
-  //     const fakeUser = {
-  //       email: 'shola@gmail.com',
-  //       password: 'jdjjnkmndjd',
-  //     };
-  //     const mockResponse = {
-  //       response: {
-  //         data: {
-  //           error: 'error',
-  //         },
-  //       },
-  //     };
+  it('should call the login success dispatch function', async () => {
+    const fakeUser = {
+      userEmail: 'jdjjd',
+      userPassword: 'jdjdjd',
+    };
+    const mockResponse = {
+      response: {
+        data: {
+          message: 'Ops',
+        },
+      },
+    };
 
-  //     moxios.stubRequest(url, { status: 200, response: mockResponse });
-  //     await loginActions.loginUser(fakeUser, { push() {} })(dispatchFn);
-  //     expect(dispatchFn).toBeCalledWith(
-  //       { type: type.LOGIN_SUCCESS, payload: mockResponse.response },
-  //     );
-  //   });
+    moxios.stubRequest(url, mockResponse);
+    await loginActions.loginUser(fakeUser)(dispatchFn);
+    expect(dispatchFn).toBeCalledTimes(2);
+    expect(dispatchFn).toBeCalledWith(
+      { type: type.LOGIN_SUCCESS },
+    );
+  });
 
-  //   it('should call the login failed dispatch function', async () => {
-  //     const fakeUser = {
-  //       email: 'shola@gmail.com',
-  //       password: 'jdjdjhkjhkd',
-  //     };
 
-//     moxios.stubRequest(url, { status: 400 });
-//     await loginActions.loginUser(fakeUser, { push() {} })(dispatchFn);
-//     expect(dispatchFn).toBeCalled();
-//   });
+  it('should call the login failed dispatch function', async () => {
+    const fakeUser = {
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+    };
+    const mockResponse = {
+      data: {
+        error: 'oopp',
+      },
+    };
+
+    moxios.stubRequest(url, { status: 400, response: mockResponse });
+    await loginActions.loginUser(fakeUser)(dispatchFn);
+    expect(dispatchFn).toBeCalledTimes(2);
+  });
 });
