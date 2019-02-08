@@ -59,7 +59,7 @@ describe('This test the signup component', () => {
   it('should return true when error occurs', () => {
     const nextProps = { error: true };
     wrapper.setProps({
-      toastManager: {
+      toast: {
         add: () => {},
       },
     });

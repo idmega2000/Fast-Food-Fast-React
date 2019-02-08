@@ -6,6 +6,7 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import AuthHeader from '../../components/AuthHeader';
 import Footer from '../../components/Footer';
@@ -31,6 +32,7 @@ export class OrderCart extends Component {
     response: PropTypes.any,
     success: PropTypes.bool,
     updateCartIcon: PropTypes.func,
+    isLoading: PropTypes.bool,
   }
 
   state = {
@@ -133,7 +135,7 @@ export class OrderCart extends Component {
       this.props.updateCartIcon();
       setTimeout(() => {
         this.props.history.push('/menu');
-      }, 5000);
+      }, 7000);
     }
     return true;
   }
@@ -286,10 +288,21 @@ export class OrderCart extends Component {
                                       placeholder="Enter Delivery Address"
                                       value={this.state.ordererInfo.ordererAddress}></textarea>
                                   </div>
-                                  <div className="form-btn centerdiv">
+                                    {!this.props.isLoading ? (
+                                      <div className="form-btn centerdiv">
                                       <button className="order-modal-btn"
                                       type="submit">Submit Order</button>
-                                  </div>
+                                    </div>
+                                    ) : (
+                                      <div className='centerdiv'>
+                                      <ClipLoader
+                                      sizeUnit='px'
+                                      size={30}
+                                      color='#ee6e73'
+                                      loading={true}
+                                        />
+                                    </div>
+                                    ) }
                               </form>
 
                           </div>
