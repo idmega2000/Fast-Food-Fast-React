@@ -5,7 +5,7 @@
 Fast-Food-Fast is an online restaurant where user can order for food.
 
 ## App is Live
-access App [here](https://fast-food-react-red.herokuapp.com/)
+access App [here](https://fast-food-react-red.herokuapp.com/) and
 Api endpoint: [here](https://fast-food-react-idris.herokuapp.com/)
 
 ## Getting Started
