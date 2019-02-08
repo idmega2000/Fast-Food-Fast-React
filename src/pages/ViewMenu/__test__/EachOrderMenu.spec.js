@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 
 import React from 'react';
 import moxios from 'moxios';
@@ -13,6 +14,7 @@ describe('This test the ViewMenu component', () => {
       quantity: 10,
     },
     updateCartIcon: jest.fn(),
+    handleTotal: jest.fn(),
   };
   beforeEach(() => {
     moxios.install();
@@ -44,6 +46,58 @@ describe('This test the ViewMenu component', () => {
     const text = wrapper.find('Fragment');
     expect(text.length).toEqual(1);
   });
+
+  it('should click to open the delete menu', () => {
+    const menuDetails = JSON.stringify([{ menuId: 1 }]);
+    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => menuDetails);
+    wrapper.setState({
+      AllMenuInfo: 'hekhekhj',
+      thisMenu: true,
+    });
+    const decrementQuantity = wrapper.find('button.del-meal-btn');
+    decrementQuantity.at(0).simulate('click');
+    expect(wrapper.instance().handleMenuDelete()).toBeCalled;
+  });
+  it('should click to open the delete menu', () => {
+    const menuDetails = JSON.stringify([{ }]);
+    jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => menuDetails);
+    wrapper.setState({
+      AllMenuInfo: 'hekhekhj',
+      thisMenu: true,
+    });
+    const button = wrapper.find('button.del-meal-btn');
+    button.at(0).simulate('click');
+    expect(wrapper.instance().handleMenuDelete()).toBeCalled;
+  });
+  // it('should call the handleQuantityChange  ', () => {
+  //   const menuDetails = JSON.stringify([{ menuId: 1 }]);
+  //   wrapper.setState({
+  //     menuId: 1,
+  //   });
+  //   const event = {
+  //     preventDefault: jest.fn(),
+  //     target: {
+  //       options: [
+  //         {
+  //           value: 0,
+  //         },
+  //       ],
+  //       result: 'something',
+  //       files: [
+  //         new Blob(),
+  //       ],
+  //       selectedIndex: 0,
+  //       value: '',
+  //     },
+  //   };
+  //   const eventt = { target: { id: 'role', value: 5 } };
+
+
+  //   jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => menuDetails);
+  //   const button = wrapper.find('.menu-select');
+  //   button.at(0).simulate('change', { event });
+  //   expect(wrapper.instance().handleQuantityChange().toBeCalled);
+  // });
 });
 
 describe('## Signup Container', () => {

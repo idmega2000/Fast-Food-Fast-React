@@ -57,8 +57,8 @@ export default class Header extends Component {
             this.state.openNav ? (
               <section id="slide-nav">
                 <a href="/">Home</a>
-                <a href="pages/login">Login</a>
-                <a href="pages/signup">Signup</a>
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
             </section>
             ) : (
               null

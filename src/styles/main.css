@@ -423,7 +423,9 @@ input.quantity-number {
     margin-bottom: 40px;
 }
 
-
+.clipps{
+    margin-top: 50px;
+}
 /* index scroll down botton*/
 /*idea gotten from Yannick Bisaillon https://codepen.io/bisaillonyannick/pen/pvZeGg*/ 
 .scroll-down{
