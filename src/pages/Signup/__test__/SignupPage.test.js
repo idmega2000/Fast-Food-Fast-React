@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-expressions */
+
 /* eslint-disable import/first */
 jest.mock('../../../helpers/authValidation');
 import React from 'react';
