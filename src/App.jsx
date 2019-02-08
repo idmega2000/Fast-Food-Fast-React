@@ -9,8 +9,8 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import Signup from './pages/Signup/SignUp';
 import Login from './pages/Login/Login';
 import store from './store';
-import ViewMenu from './pages/ViewMenu/ViewMenu';
-import OrderCart from './pages/ViewMenu/OrderCart';
+import ViewMenu from './pages/Menu/ViewMenu';
+import OrderCart from './pages/Menu/OrderCart';
 
 const Router = ({ user }) => (
   <Provider store={store}>
@@ -25,6 +25,7 @@ const Router = ({ user }) => (
       </BrowserRouter>
   </Provider>
 );
+
 
 Router.propTypes = {
   user: PropTypes.any,

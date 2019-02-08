@@ -9,7 +9,7 @@ import Header from '../../components/Header';
 import AuthContainer from '../../components/AuthContainer';
 import Footer from '../../components/Footer';
 import authValidation from '../../helpers/authValidation';
-import loginActionCreators from '../../actions/Auth/login/loginActions';
+import loginActionCreators from '../../actions/auth/login/loginActions';
 
 
 /**

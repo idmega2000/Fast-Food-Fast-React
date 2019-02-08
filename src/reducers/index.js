@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import signUpReducer from './authReducers/signUp/signUpReducer';
-import loginReducer from './authReducers/login/loginReducer';
-import viewMenuReducer from './viewMenu/viewMenu';
+import signUpReducer from './auth/signUp/signUpReducer';
+import loginReducer from './auth/login/loginReducer';
+import menuReducer from './menu/menuReducer';
 
 const allReducers = combineReducers({
   signUpReducer,
   loginReducer,
-  viewMenuReducer,
+  menuReducer,
 });
 
 export default allReducers;

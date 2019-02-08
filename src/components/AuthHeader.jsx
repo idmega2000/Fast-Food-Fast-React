@@ -77,7 +77,7 @@ export class AuthHeader extends Component {
                                     <span>&#9660;</span>
                                 </a>
                                 <div className="dropdown-content nav-dropdown">
-                                    <a href="/menu">Fast Food</a>
+                                    <a href="/menu">Menu</a>
                                     <a href="/user-history">Order History</a>
                                     <a className="logout-btn" href='#'
                                     onClick={this.logoutUser}>Logout</a>
@@ -91,7 +91,7 @@ export class AuthHeader extends Component {
         {
             this.state.openNav ? (
                 <section id="slide-nav" className="nav-dropdown">
-                <a href="/menu">Fast Food</a>
+                <a href="/menu">Menu</a>
                 <a href="/user-history">Order History</a>
                 <a id="logoutBtn" href='#'
                 onClick={this.logoutUser} className="logout-btn">Logout</a>
@@ -106,7 +106,7 @@ export class AuthHeader extends Component {
 }
 
 export const mapStateToProps = state => ({
-  ...state.viewMenuReducer,
+  ...state.menuReducer,
 });
 
 export default connect(mapStateToProps)(AuthHeader);

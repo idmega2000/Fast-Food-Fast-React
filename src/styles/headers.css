@@ -175,6 +175,10 @@ text-transform: capitalize;
 	display: inline-block;
 }
 
+.logout-btn{
+	padding-bottom: 20px;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
